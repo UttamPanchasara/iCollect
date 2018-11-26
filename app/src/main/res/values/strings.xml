@@ -7,4 +7,6 @@
     <string name="save">Save</string>
     <string name="please_enter_code">Please enter code or scan</string>
     <string name="please_enter_name">Please enter name</string>
+    <string name="search">Search</string>
+    <string name="no_records">No Records!</string>
 </resources>
