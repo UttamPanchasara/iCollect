@@ -45,8 +45,8 @@ class AddNewActivity : BaseActivity(), AddNewView {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onDetachView() {
+        super.onDetachView()
         mViewModel.onDetachView()
     }
 
@@ -68,7 +68,7 @@ class AddNewActivity : BaseActivity(), AddNewView {
                 toast(getString(R.string.please_enter_name))
             }
             else -> {
-                mViewModel.saveRecord(mSelectedDate, code, name, number, address)
+                mViewModel.saveRecord(code, name, number, address)
             }
         }
     }

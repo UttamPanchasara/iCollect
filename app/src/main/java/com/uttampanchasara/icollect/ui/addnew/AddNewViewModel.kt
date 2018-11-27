@@ -23,7 +23,7 @@ class AddNewViewModel
         mView = view as AddNewView
     }
 
-    fun saveRecord(time: Long, code: String, name: String, number: String, address: String) {
+    fun saveRecord( code: String, name: String, number: String, address: String) {
 
         val time = System.currentTimeMillis()
         val data = RecordData(time, getDate(time), address, code, name, number)

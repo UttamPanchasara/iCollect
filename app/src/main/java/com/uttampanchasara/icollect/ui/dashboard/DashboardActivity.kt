@@ -86,13 +86,13 @@ class DashboardActivity : BaseActivity(), DashboardView,
 
     override fun onPause() {
         mDataManager.getRecords().removeObserver(this)
-        mViewModel.onDetachView()
         dismissDialog()
         super.onPause()
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        mViewModel.onDetachView()
         dismissDialog()
     }
 
