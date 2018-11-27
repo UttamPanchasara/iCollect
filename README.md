@@ -28,10 +28,11 @@ In which I have used barcode scanner to scan any code and other basic informatio
 1. **network**: Services configuration for the application using retrofit.
 
 #### Library reference resources:
-1. RxJava2: https://github.com/amitshekhariitbhu/RxJava2-Android-Samples
-2. Dagger2: https://github.com/MindorksOpenSource/android-dagger2-example
-3. Retrofit: https://square.github.io/retrofit/
-4. Room: https://developer.android.com/topic/libraries/architecture/room
+1. **RxJava2:** https://github.com/amitshekhariitbhu/RxJava2-Android-Samples
+2. **Dagger2:** https://github.com/MindorksOpenSource/android-dagger2-example
+3. **Retrofit:** https://square.github.io/retrofit/
+4. **Room:** https://developer.android.com/topic/libraries/architecture/room
+5. **Scanner:** https://github.com/dm77/barcodescanner
 
 ### Want to Contribute? :
 Always welcome to PR. :)
