@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Scanner</string>
+    <string name="app_name">iCollect</string>
     <string name="hint_enter_code">Enter Code</string>
     <string name="hint_name">Name</string>
     <string name="hint_number">Number</string>
