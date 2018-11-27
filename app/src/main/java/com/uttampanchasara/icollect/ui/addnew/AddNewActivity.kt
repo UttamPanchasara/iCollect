@@ -45,8 +45,8 @@ class AddNewActivity : BaseActivity(), AddNewView {
         }
     }
 
-    override fun onDetachView() {
-        super.onDetachView()
+    override fun onDestroy() {
+        super.onDestroy()
         mViewModel.onDetachView()
     }
 
