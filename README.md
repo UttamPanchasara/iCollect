@@ -1,5 +1,5 @@
 # Scanner
-**Hobby Project: Android Application to Collect data with basic information of User,**
+**Hobby Project: Fully Offline Android Application to Collect data with basic information of User,**
 
 In which I have used barcode scanner to scan any code and other basic information of user and store that as record also show the history for same.
 
