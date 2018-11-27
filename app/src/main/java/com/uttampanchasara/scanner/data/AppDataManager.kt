@@ -2,9 +2,9 @@ package com.uttampanchasara.scanner.data
 
 import android.arch.lifecycle.LiveData
 import android.content.Context
+import com.uttampanchasara.network.remote.ApiServices
 import com.uttampanchasara.scanner.data.repository.record.RecordData
 import com.uttampanchasara.scanner.di.ApplicationContext
-import com.uttampanchasara.network.remote.ApiServices
 import io.reactivex.Observable
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,8 +20,20 @@ class AppDataManager
                              val dbHelper: DbHelper,
                              val apiServices: ApiServices) : DataManager {
 
-    override fun searchRecord(query: String?): Observable<List<RecordData>> {
-        return dbHelper.searchRecord(query)
+    override fun getRecordsFromDate(date: String?): LiveData<List<RecordData>> {
+        return dbHelper.getRecordsFromDate(date)
+    }
+
+    override fun getAllDates(): LiveData<List<String>> {
+        return dbHelper.getAllDates()
+    }
+
+    override fun getRecordsInGroup(): LiveData<List<RecordData>> {
+        return dbHelper.getRecordsInGroup()
+    }
+
+    override fun searchRecord(query: String?, date: String?): Observable<List<RecordData>> {
+        return dbHelper.searchRecord(query, date)
     }
 
     override fun getRecords(): LiveData<List<RecordData>> {

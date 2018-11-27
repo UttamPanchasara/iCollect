@@ -1,5 +1,6 @@
 package com.uttampanchasara.scanner.ui.addnew
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.core.widget.toast
 import com.uttampanchasara.scanner.R
@@ -7,6 +8,7 @@ import com.uttampanchasara.scanner.di.component.ActivityComponent
 import com.uttampanchasara.scanner.ui.base.BaseActivity
 import com.uttampanchasara.scanner.ui.scanner.ScannerActivity
 import kotlinx.android.synthetic.main.activity_add_new.*
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -28,6 +30,8 @@ class AddNewActivity : BaseActivity(), AddNewView {
 
     @Inject
     lateinit var mViewModel: AddNewViewModel
+
+    var mSelectedDate: Long = 0
 
     override fun setUp() {
         mViewModel.onAttachView(this)
@@ -64,13 +68,13 @@ class AddNewActivity : BaseActivity(), AddNewView {
                 toast(getString(R.string.please_enter_name))
             }
             else -> {
-                mViewModel.saveRecord(code, name, number, address)
+                mViewModel.saveRecord(mSelectedDate, code, name, number, address)
             }
         }
     }
 
     override fun onRecordInserted() {
-        toast("Data Saved!")
+        toast("RecordDataWithHeader Saved!")
         finish()
     }
 
@@ -79,5 +83,21 @@ class AddNewActivity : BaseActivity(), AddNewView {
         if (requestCode == REQUEST_CODE && resultCode == ScannerActivity.RESULT_CODE) {
             edtCode.setText(data?.getStringExtra(ScannerActivity.DATA))
         }
+    }
+
+    private fun showDatePicker() {
+        // Get Current Date
+        val c = Calendar.getInstance()
+        val fromYear = c.get(Calendar.YEAR)
+        val fromMonth = c.get(Calendar.MONTH)
+        val fromDay = c.get(Calendar.DAY_OF_MONTH)
+
+        val dialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            // Display Selected date in textbox
+            val calendar = GregorianCalendar(year, monthOfYear, dayOfMonth)
+            mSelectedDate = calendar.timeInMillis
+
+        }, fromYear, fromMonth, fromDay)
+        dialog.show()
     }
 }

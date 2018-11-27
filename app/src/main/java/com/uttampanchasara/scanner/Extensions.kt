@@ -1,5 +1,6 @@
 package com.uttampanchasara.scanner
 
+import android.content.Intent
 import android.support.annotation.StringRes
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AlertDialog
@@ -55,8 +56,21 @@ fun getDateWithTFormat(date: String): String {
     return spf.format(newDate)
 }
 
+fun getTime(time: Long): String {
+    val cal = Calendar.getInstance(Locale.ENGLISH)
+    cal.setTimeInMillis(time)
+    return DateFormat.format("dd-MM-yyyy hh:mm:ss a", cal).toString()
+}
+
 fun getDate(time: Long): String {
     val cal = Calendar.getInstance(Locale.ENGLISH)
     cal.setTimeInMillis(time)
-    return DateFormat.format("yyyy-MM-dd hh:mm:ss a", cal).toString()
+    return DateFormat.format("dd-MM-yyyy", cal).toString()
+}
+
+fun BaseActivity.shareRecord(body: String) {
+    val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
+    sharingIntent.type = "text/plain"
+    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, body)
+    startActivity(Intent.createChooser(sharingIntent, "Share via"))
 }

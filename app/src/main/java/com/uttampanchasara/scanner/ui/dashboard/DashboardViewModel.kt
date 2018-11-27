@@ -16,19 +16,23 @@ class DashboardViewModel
 @Inject constructor(mDataManager: DataManager,
                     mSchedulerProvider: SchedulerProvider,
                     mCompositeDisposable: CompositeDisposable) : BaseViewModel(mDataManager, mSchedulerProvider, mCompositeDisposable) {
+
+    companion object {
+        val TAG = "DashboardViewModel"
+    }
+
     var mView: DashboardView? = null
 
     override fun onAttachView(view: BaseView) {
         mView = view as DashboardView
     }
 
-    fun searchRecord(query: String?) {
-
-        mDataManager.searchRecord(query)
+    fun searchRecord(query: String?, date: String?) {
+        mCompositeDisposable.add(mDataManager.searchRecord(query, date)
                 .observeOn(mSchedulerProvider.ui())
                 .subscribeOn(mSchedulerProvider.io())
                 .subscribe {
                     mView?.onSearchResult(it)
-                }
+                })
     }
 }

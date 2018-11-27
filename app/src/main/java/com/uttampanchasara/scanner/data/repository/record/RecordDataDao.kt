@@ -22,7 +22,15 @@ interface RecordDataDao {
     @Query("SELECT count(*) FROM records")
     fun getTotalRecords(): Int
 
-    @Query("SELECT * FROM records WHERE name LIKE :query ORDER BY time DESC")
-    fun searchRecord(query: String?): List<RecordData>
+    @Query("SELECT * FROM records WHERE name LIKE :query AND date =:date ORDER BY time DESC")
+    fun searchRecord(query: String?, date: String?): List<RecordData>
 
+    @Query("SELECT * FROM records GROUP BY date ORDER BY time DESC")
+    fun getAllRecordsInGroup(): LiveData<List<RecordData>>
+
+    @Query("SELECT DISTINCT date FROM records ORDER BY time DESC")
+    fun getAllDates(): LiveData<List<String>>
+
+    @Query("SELECT * FROM records WHERE date =:date ORDER BY time DESC")
+    fun getRecordsFromDate(date: String?): LiveData<List<RecordData>>
 }

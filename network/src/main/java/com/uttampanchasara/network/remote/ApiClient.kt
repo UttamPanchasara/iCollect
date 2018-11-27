@@ -10,12 +10,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-/**
- *
- * @author <a href="https://github.com/burhanrashid52">Burhanuddin Rashid</a>
- * @since 7/28/2018
- */
-
 class ApiClient {
 
     companion object {

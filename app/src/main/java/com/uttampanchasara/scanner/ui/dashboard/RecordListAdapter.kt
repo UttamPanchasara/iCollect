@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.uttampanchasara.scanner.R
 import com.uttampanchasara.scanner.data.repository.record.RecordData
-import com.uttampanchasara.scanner.getDate
+import com.uttampanchasara.scanner.getTime
 import kotlinx.android.synthetic.main.list_records.view.*
 
 /**
  * @since 11/26/2018
  */
-class RecordListAdapter : RecyclerView.Adapter<ViewHolder>() {
+class RecordListAdapter(val mClickListener: RecordClickListener) : RecyclerView.Adapter<ViewHolder>() {
 
     var mRecordDataList: List<RecordData> = arrayListOf()
 
@@ -36,6 +36,10 @@ class RecordListAdapter : RecyclerView.Adapter<ViewHolder>() {
 
         viewHolder.itemView.setOnClickListener {
             changeSelection(position)
+        }
+
+        viewHolder.itemView.btnShare.setOnClickListener {
+            mClickListener.onRecordShare(recordData)
         }
 
         if (mSelectedPosition == position) {
@@ -78,18 +82,22 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bindView(recordData: RecordData) {
         itemView.txtCode.text = recordData.code
         itemView.txtName.text = recordData.name
-        itemView.txtTime.text = getDate(recordData.time)
+        itemView.txtTime.text = getTime(recordData.time)
 
         if (recordData.address.isNotEmpty()) {
             itemView.txtAddress.text = recordData.address
         } else {
-            itemView.txtAddress.text = "-"
+            itemView.txtAddress.text = "NA"
         }
 
         if (recordData.number.isNotEmpty()) {
             itemView.txtNumber.text = recordData.number
         } else {
-            itemView.txtNumber.text = "-"
+            itemView.txtNumber.text = "NA"
         }
     }
+}
+
+interface RecordClickListener {
+    fun onRecordShare(recordData: RecordData)
 }

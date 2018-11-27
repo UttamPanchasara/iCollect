@@ -9,7 +9,48 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary" />
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/txtSelectDate"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical|center"
+            android:hint="@string/hint_select_date"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="18sp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <!--<View
+        android:id="@+id/dateSelectorView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/txtSelectDate"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:drawableEnd="@drawable/ic_arrow_drop_down"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical|center"
+        android:hint="@string/hint_select_date"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/dateSelectorView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dateSelectorView" />-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvRecords"

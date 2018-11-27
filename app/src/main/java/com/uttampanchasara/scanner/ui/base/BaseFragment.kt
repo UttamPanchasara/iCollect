@@ -36,6 +36,10 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     abstract fun getLayoutId(): Int
 
+    override fun onError(errorMessage: String) {
+
+    }
+
     private var mActivity: BaseActivity? = null
 
     abstract fun setupView(view: View, savedInstanceState: Bundle?)

@@ -9,6 +9,8 @@ data class RecordData(
         @PrimaryKey
         @SerializedName("time")
         val time: Long,
+        @SerializedName("date")
+        val date: String,
         @SerializedName("address")
         val address: String,
         @SerializedName("code")
