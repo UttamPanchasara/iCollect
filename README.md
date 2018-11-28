@@ -17,6 +17,7 @@ In which I have used barcode scanner to scan any code and other basic informatio
 1. **Add New Record**: Adding new records with basic details like Name, Code(Any), Number, Address, and Time(Default).
 2. **History**: Showing history of Added records with Filter, Share, and Search functionality
 3. **Scanner**: Added 3rd Party Barcode scanner library to scan code(barcode|QR) instead of entering manually.
+4. **Pdf Report**: Can generate Pdf of all stored records
 
 #### The app has following packages:
 1. **data**: It contains all the data accessing and manipulating components.
