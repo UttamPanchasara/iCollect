@@ -2,9 +2,9 @@ package com.uttampanchasara.icollect.data
 
 import android.arch.lifecycle.LiveData
 import android.content.Context
-import com.uttampanchasara.network.remote.ApiServices
 import com.uttampanchasara.icollect.data.repository.record.RecordData
 import com.uttampanchasara.icollect.di.ApplicationContext
+import com.uttampanchasara.network.remote.ApiServices
 import io.reactivex.Observable
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,8 +20,16 @@ class AppDataManager
                              val dbHelper: DbHelper,
                              val apiServices: ApiServices) : DataManager {
 
-    override fun getRecordsFromDate(date: String?): LiveData<List<RecordData>> {
+    override fun getRecordsFromDate(date: String?): Observable<List<RecordData>> {
         return dbHelper.getRecordsFromDate(date)
+    }
+
+    override fun getAllRecords(): Observable<List<RecordData>> {
+        return dbHelper.getAllRecords()
+    }
+
+    override fun getLiveRecordsFromDate(date: String?): LiveData<List<RecordData>> {
+        return dbHelper.getLiveRecordsFromDate(date)
     }
 
     override fun getAllDates(): LiveData<List<String>> {

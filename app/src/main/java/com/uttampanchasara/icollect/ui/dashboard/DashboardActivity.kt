@@ -7,8 +7,12 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.ListPopupWindow
+import androidx.core.widget.toast
 import com.uttampanchasara.icollect.R
 import com.uttampanchasara.icollect.data.DataManager
 import com.uttampanchasara.icollect.data.repository.record.RecordData
@@ -46,6 +50,8 @@ class DashboardActivity : BaseActivity(), DashboardView,
 
     var mSelectedDate: String? = ""
 
+    private var mWebView: WebView? = null
+
     override fun injectComponents(mActivityComponent: ActivityComponent) {
         mActivityComponent.inject(this)
     }
@@ -57,6 +63,8 @@ class DashboardActivity : BaseActivity(), DashboardView,
         mViewModel.onAttachView(this)
         setToolbar(toolbar, "Records", false)
         btnAdd.setOnClickListener {
+            //set current as selected
+            mSelectedDate = getDate(System.currentTimeMillis())
             startActivity(Intent(this, AddNewActivity::class.java))
         }
 
@@ -112,7 +120,7 @@ class DashboardActivity : BaseActivity(), DashboardView,
 
     private fun fetchRecords() {
         txtSelectDate.text = mSelectedDate
-        mDataManager.getRecordsFromDate(mSelectedDate).observe(this, this)
+        mDataManager.getLiveRecordsFromDate(mSelectedDate).observe(this, this)
     }
 
     override fun onChanged(records: List<RecordData>?) {
@@ -156,6 +164,17 @@ class DashboardActivity : BaseActivity(), DashboardView,
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_print_all) {
+            mViewModel.generateAllRecordsHTML()
+            return true
+        } else if (item.itemId == R.id.action_print_current_records) {
+            mViewModel.generateCurrentRecordsHTML(mSelectedDate)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onQueryTextSubmit(p0: String?): Boolean {
         return false
     }
@@ -177,5 +196,22 @@ class DashboardActivity : BaseActivity(), DashboardView,
             placeholder.visibility = View.GONE
         }
         mAdapter.setData(list)
+    }
+
+    override fun onHTMLContentAvailable(htmlContent: String?) {
+        val webView = WebView(this)
+        if (htmlContent?.isNotEmpty()!!) {
+            webView.loadData(htmlContent, "text/html", "UTF-8")
+            webView.clearCache(true)
+            webView.webViewClient = object : WebViewClient() {
+                override fun onPageFinished(view: WebView?, url: String?) {
+                    mViewModel.createPrintJob(this@DashboardActivity, view)
+                    mWebView = null
+                }
+            }
+        } else {
+            toast(getString(R.string.some_wrong))
+        }
+        mWebView = webView
     }
 }

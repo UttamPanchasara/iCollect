@@ -10,4 +10,6 @@ import com.uttampanchasara.icollect.ui.base.BaseView
  */
 interface DashboardView : BaseView {
     fun onSearchResult(records: List<RecordData>?)
+
+    fun onHTMLContentAvailable(htmlContent: String?)
 }

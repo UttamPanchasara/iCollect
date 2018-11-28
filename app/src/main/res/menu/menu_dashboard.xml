@@ -7,6 +7,15 @@
         android:icon="@android:drawable/ic_menu_search"
         android:title="@string/search"
         app:actionViewClass="android.support.v7.widget.SearchView"
-        app:showAsAction="always|collapseActionView" />
+        app:showAsAction="ifRoom|collapseActionView" />
 
+    <item
+        android:id="@+id/action_print_all"
+        android:title="@string/menu_text_print_all_records"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_print_current_records"
+        android:title="@string/menu_text_print_current_records"
+        app:showAsAction="never" />
 </menu>

@@ -19,6 +19,9 @@ interface RecordDataDao {
     @Query("SELECT * FROM records ORDER BY time DESC")
     fun getRecords(): LiveData<List<RecordData>>
 
+    @Query("SELECT * FROM records ORDER BY time DESC")
+    fun getAllRecords(): List<RecordData>
+
     @Query("SELECT count(*) FROM records")
     fun getTotalRecords(): Int
 
@@ -32,5 +35,8 @@ interface RecordDataDao {
     fun getAllDates(): LiveData<List<String>>
 
     @Query("SELECT * FROM records WHERE date =:date ORDER BY time DESC")
-    fun getRecordsFromDate(date: String?): LiveData<List<RecordData>>
+    fun getLiveRecordsFromDate(date: String?): LiveData<List<RecordData>>
+
+    @Query("SELECT * FROM records WHERE date =:date ORDER BY time DESC")
+    fun getRecordsFromDate(date: String?): List<RecordData>
 }

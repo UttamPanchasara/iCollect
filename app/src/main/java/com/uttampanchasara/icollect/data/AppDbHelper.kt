@@ -13,8 +13,20 @@ import javax.inject.Inject
 class AppDbHelper
 @Inject internal constructor(private val appDatabase: AppDatabase) : DbHelper {
 
-    override fun getRecordsFromDate(date: String?): LiveData<List<RecordData>> {
-        return appDatabase.recordDataDao().getRecordsFromDate(date)
+    override fun getRecordsFromDate(date: String?): Observable<List<RecordData>> {
+        return Observable.fromCallable {
+            return@fromCallable appDatabase.recordDataDao().getRecordsFromDate(date)
+        }
+    }
+
+    override fun getAllRecords(): Observable<List<RecordData>> {
+        return Observable.fromCallable {
+            return@fromCallable appDatabase.recordDataDao().getAllRecords()
+        }
+    }
+
+    override fun getLiveRecordsFromDate(date: String?): LiveData<List<RecordData>> {
+        return appDatabase.recordDataDao().getLiveRecordsFromDate(date)
     }
 
     override fun getAllDates(): LiveData<List<String>> {

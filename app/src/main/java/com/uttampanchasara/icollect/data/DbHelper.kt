@@ -14,11 +14,15 @@ interface DbHelper {
 
     fun getRecords(): LiveData<List<RecordData>>
 
+    fun getAllRecords(): Observable<List<RecordData>>
+
     fun searchRecord(query: String?, date: String?): Observable<List<RecordData>>
 
     fun getRecordsInGroup(): LiveData<List<RecordData>>
 
     fun getAllDates(): LiveData<List<String>>
 
-    fun getRecordsFromDate(date: String?): LiveData<List<RecordData>>
+    fun getLiveRecordsFromDate(date: String?): LiveData<List<RecordData>>
+
+    fun getRecordsFromDate(date: String?): Observable<List<RecordData>>
 }

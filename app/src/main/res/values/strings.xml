@@ -10,4 +10,8 @@
     <string name="search">Search</string>
     <string name="no_records">No Records!</string>
     <string name="hint_select_date">Select Date</string>
+
+    <string name="some_wrong">Something went wrong!, please try again</string>
+    <string name="menu_text_print_all_records">Print All Records</string>
+    <string name="menu_text_print_current_records">Print Current Records</string>
 </resources>
