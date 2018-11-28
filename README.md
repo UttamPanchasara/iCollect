@@ -7,9 +7,9 @@ In which I have used barcode scanner to scan any code and other basic informatio
 | ------------------------------- | ------------------------------- | -------------------------------- | 
 | <img src="https://i.imgur.com/bN0ClZg.gif" height="400" alt="Screenshot"/>  | <img src="https://i.imgur.com/C9vy26y.gif" height="400" alt="Screenshot"/> | <img src="https://i.imgur.com/4JZu84t.gif" height="400" alt="Screenshot"/> |
 
-| Barcode Scanner |
-| -------------------------------- |
-| <img src="https://i.imgur.com/fgLnMJX.gif" height="400" alt="Screenshot"/> |
+| Barcode Scanner | Pdf Report |
+| -------------------------------- | -------------------------------- |
+| <img src="https://i.imgur.com/uIdqbNX.gif" height="400" alt="Screenshot"/> | <img src="https://i.imgur.com/L8aJlxz.gif" height="400" alt="Screenshot"/> |
 
 
 
