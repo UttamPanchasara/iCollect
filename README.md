@@ -1,4 +1,6 @@
 # iCollect
+[![Uplabs](https://img.shields.io/badge/Uplabs-icollect-orange.svg)](https://www.uplabs.com/posts/icollect)
+
 **Hobby Project: Fully Offline Android Application to Collect data with basic information of User,**
 
 In which I have used barcode scanner to scan any code and other basic information of user and store that as record also show the history for same.
@@ -40,14 +42,9 @@ Always welcome to PR. :)
 
 ### Questions?
  
- **Ping-Me on :** 
- 
- ![alt text][1.1] : https://twitter.com/utm_panchasara
- 
- ![alt text][2.2] : https://www.facebook.com/UttamPanchasara94
- 
- [1.1]: http://i.imgur.com/wWzX9uB.png (twitter icon with padding)
- [2.2]: http://i.imgur.com/fep1WsG.png (facebook icon without padding)
+**Ping-Me on :**  [![Twitter](https://img.shields.io/badge/Twitter-%40UTM__Panchasara-blue.svg)](https://twitter.com/UTM_Panchasara)
+[![Facebook](https://img.shields.io/badge/Facebook-Uttam%20Panchasara-blue.svg)](https://www.facebook.com/UttamPanchasara94)
+
 
 <a href="https://stackoverflow.com/users/5719935/uttam-panchasara">
 <img src="https://stackoverflow.com/users/flair/5719935.png" width="208" height="58" alt="profile for Uttam Panchasara at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Uttam Panchasara at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
