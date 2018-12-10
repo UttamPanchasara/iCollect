@@ -1,4 +1,4 @@
-package com.uttampanchasara.icollect.ui.dashboard
+package com.uttampanchasara.icollect.ui.record
 
 import android.content.Context
 import android.os.Build
@@ -22,19 +22,19 @@ import javax.inject.Inject
  * @author <a href="https://github.com/UttamPanchasara">Uttam Panchasara</a>
  * @since 11/16/2018
  */
-class DashboardViewModel
+class RecordViewModel
 @Inject constructor(mDataManager: DataManager,
                     mSchedulerProvider: SchedulerProvider,
                     mCompositeDisposable: CompositeDisposable) : BaseViewModel(mDataManager, mSchedulerProvider, mCompositeDisposable) {
 
     companion object {
-        val TAG = "DashboardViewModel"
+        val TAG = "RecordViewModel"
     }
 
-    var mView: DashboardView? = null
+    var mView: RecordView? = null
 
     override fun onAttachView(view: BaseView) {
-        mView = view as DashboardView
+        mView = view as RecordView
     }
 
     fun searchRecord(query: String?, date: String?) {

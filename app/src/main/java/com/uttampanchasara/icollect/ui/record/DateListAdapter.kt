@@ -1,4 +1,4 @@
-package com.uttampanchasara.icollect.ui.dashboard
+package com.uttampanchasara.icollect.ui.record
 
 import android.annotation.SuppressLint
 import android.content.Context

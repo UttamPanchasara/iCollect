@@ -14,4 +14,10 @@
     <string name="some_wrong">Something went wrong!, please try again</string>
     <string name="menu_text_print_all_records">Print All Records</string>
     <string name="menu_text_print_current_records">Print Current Records</string>
+    <string name="label_total_records">Total Records</string>
+    <string name="label_today">Today</string>
+    <string name="text_activity">Activity</string>
+    <string name="text_dashboard">Dashboard</string>
+    <string name="hint_total_record">Total Record</string>
+    <string name="text_add_records">Add Records</string>
 </resources>

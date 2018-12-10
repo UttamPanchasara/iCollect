@@ -3,103 +3,116 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
-
-        <TextView
-            android:id="@+id/txtSelectDate"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:drawableEnd="@drawable/ic_arrow_drop_down"
-            android:drawablePadding="15dp"
-            android:gravity="center_vertical|center"
-            android:hint="@string/hint_select_date"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:textSize="18sp" />
-
-    </android.support.v7.widget.Toolbar>
-
-    <!--<View
-        android:id="@+id/dateSelectorView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="10dp">
 
     <TextView
-        android:id="@+id/txtSelectDate"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:drawableEnd="@drawable/ic_arrow_drop_down"
-        android:drawablePadding="15dp"
-        android:gravity="center_vertical|center"
-        android:hint="@string/hint_select_date"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/dateSelectorView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/dateSelectorView" />-->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvRecords"
+        android:id="@+id/dashboard"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <LinearLayout
-        android:id="@+id/placeholder"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:visibility="visible">
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        android:text="@string/text_dashboard"
+        android:textColor="@color/primary_text"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_history" />
+    <TextView
+        android:id="@+id/activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="@string/text_activity"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/dashboard" />
+
+    <FrameLayout
+        android:id="@+id/fmTotalRecords"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/fmToday"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity">
+
+        <TextView
+            android:id="@+id/txtTotalRecords"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_input_layout"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/primary_text"
+            android:textSize="22sp"
+            tools:text="123" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no_records" />
+            android:layout_marginStart="15dp"
+            android:background="#FFFFFF"
+            android:text="@string/label_total_records"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp" />
 
-    </LinearLayout>
+    </FrameLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btnAdd"
+    <FrameLayout
+        android:id="@+id/fmToday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fmTotalRecords"
+        app:layout_constraintTop_toBottomOf="@+id/activity">
+
+        <TextView
+            android:id="@+id/txtToday"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_input_layout"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/primary_text"
+            android:textSize="22sp"
+            tools:text="12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:background="#FFFFFF"
+            android:text="@string/label_today"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp" />
+
+    </FrameLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/floating_button_margin"
-        android:src="@drawable/ic_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 
-    <WebView
-        android:id="@+id/webview"
+    <Button
+        android:id="@+id/btnStart"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_selected_item"
+        android:text="@string/text_add_records"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
 </android.support.constraint.ConstraintLayout>

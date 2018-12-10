@@ -1,4 +1,4 @@
-package com.uttampanchasara.icollect.ui.dashboard
+package com.uttampanchasara.icollect.ui.record
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
