@@ -98,6 +98,40 @@
 
     </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/fmUsers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fmTotalRecords">
+
+        <TextView
+            android:id="@+id/txtUsers"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_input_layout"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/primary_text"
+            android:textSize="22sp"
+            tools:text="12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:background="#FFFFFF"
+            android:text="@string/label_users"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp" />
+
+    </FrameLayout>
+
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"

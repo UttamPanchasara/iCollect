@@ -6,6 +6,7 @@ import com.uttampanchasara.icollect.data.DataManager
 import com.uttampanchasara.icollect.di.ActivityContext
 import com.uttampanchasara.icollect.di.PerActivity
 import com.uttampanchasara.icollect.ui.addnew.AddNewViewModel
+import com.uttampanchasara.icollect.ui.dashboard.DashboardViewModel
 import com.uttampanchasara.icollect.ui.record.RecordViewModel
 import com.uttampanchasara.icollect.ui.splash.SplashViewModel
 import com.uttampanchasara.icollect.utils.rx.AppSchedulerProvider
@@ -40,7 +41,7 @@ class ActivityModule constructor(val mActivity: AppCompatActivity) {
 
     @Provides
     @PerActivity
-    internal fun provideDashboardViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider, compositeDisposable: CompositeDisposable):
+    internal fun provideRecordViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider, compositeDisposable: CompositeDisposable):
             RecordViewModel = RecordViewModel(dataManager, schedulerProvider, compositeDisposable)
 
     @Provides
@@ -52,5 +53,10 @@ class ActivityModule constructor(val mActivity: AppCompatActivity) {
     @PerActivity
     internal fun provideAddNewViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider, compositeDisposable: CompositeDisposable):
             AddNewViewModel = AddNewViewModel(dataManager, schedulerProvider, compositeDisposable)
+
+    @Provides
+    @PerActivity
+    internal fun provideDashboardViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider, compositeDisposable: CompositeDisposable):
+            DashboardViewModel = DashboardViewModel(dataManager, schedulerProvider, compositeDisposable)
 
 }

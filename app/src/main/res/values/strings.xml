@@ -20,4 +20,5 @@
     <string name="text_dashboard">Dashboard</string>
     <string name="hint_total_record">Total Record</string>
     <string name="text_add_records">Add Records</string>
+    <string name="label_users">Users</string>
 </resources>

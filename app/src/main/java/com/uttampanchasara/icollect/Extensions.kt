@@ -24,6 +24,10 @@ fun BaseActivity.showSnackbar(@StringRes message: Int,
             .show()
 }
 
+fun dateFormat(): String {
+    return "dd-MM-yyyy"
+}
+
 fun BaseActivity.showSnackbar(@StringRes message: Int) {
     Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
 }
@@ -43,7 +47,7 @@ fun BaseActivity.showAlertDialog(dialogBuilder: AlertDialog.Builder.() -> Unit) 
 fun getDateInFormat(date: String): String {
     var spf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
     val newDate = spf.parse(date)
-    spf = SimpleDateFormat("dd/MM/yy")
+    spf = SimpleDateFormat(dateFormat())
 
     return spf.format(newDate)
 }
@@ -56,16 +60,29 @@ fun getDateWithTFormat(date: String): String {
     return spf.format(newDate)
 }
 
+fun getTimeWithTFormat(date: String): Long {
+    var spf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX")
+    return spf.parse(date).time
+}
+
 fun getTime(time: Long): String {
     val cal = Calendar.getInstance(Locale.ENGLISH)
     cal.setTimeInMillis(time)
     return DateFormat.format("dd-MM-yyyy hh:mm:ss a", cal).toString()
 }
 
+fun getTime(time: String): String {
+    var spf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX")
+    val newDate = spf.parse(time)
+    spf = SimpleDateFormat("dd-MM-yyyy hh:mm:ss a")
+
+    return spf.format(newDate)
+}
+
 fun getDate(time: Long): String {
     val cal = Calendar.getInstance(Locale.ENGLISH)
-    cal.setTimeInMillis(time)
-    return DateFormat.format("dd-MM-yyyy", cal).toString()
+    cal.timeInMillis = time
+    return DateFormat.format(dateFormat(), cal).toString()
 }
 
 fun BaseActivity.shareRecord(body: String) {

@@ -130,22 +130,22 @@ class RecordActivity : BaseActivity(), RecordView,
     override fun onRecordShare(recordData: RecordData) {
 
         val shareData: String?
-        val address: String? = if (recordData.address.isNotEmpty()) {
-            "Address: " + recordData.address
+        val address: String? = if (recordData.customerAddress.isNotEmpty()) {
+            "Address: " + recordData.customerAddress
         } else {
             "Address: NA"
         }
-        val number: String? = if (recordData.number.isNotEmpty()) {
-            "Number: " + recordData.number
+        val number: String? = if (recordData.customerNumber.isNotEmpty()) {
+            "Number: " + recordData.customerNumber
         } else {
             "Number: NA"
         }
 
-        shareData = "Name: " + recordData.name +
-                "\nCode: " + recordData.code +
+        shareData = "Name: " + recordData.customerName +
+                "\nCode: " + recordData.productId +
                 "\n" + number +
                 "\n" + address +
-                "\nTime: " + getTime(recordData.time)
+                "\nTime: " + getTime(recordData.createdAt)
 
         shareRecord(shareData)
     }

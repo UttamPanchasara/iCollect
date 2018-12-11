@@ -85,10 +85,10 @@ class RecordViewModel
             val record = recordList[i]
 
             htmlRowData += "<tr>\n" +
-                    timeTD.replace("TIME", getTime(record.time)) +
-                    nameTD.replace("NAME", record.name) +
-                    codeTD.replace("CODE", record.code) +
-                    numberTD.replace("NUMBER", record.number) +
+                    timeTD.replace("TIME", getTime(record.createdAt)) +
+                    nameTD.replace("NAME", record.customerName) +
+                    codeTD.replace("CODE", record.productId) +
+                    numberTD.replace("NUMBER", record.customerNumber) +
                     "  </tr>"
         }
 
@@ -100,7 +100,7 @@ class RecordViewModel
         // Get a PrintManager instance
         val printManager = context.getSystemService(Context.PRINT_SERVICE) as PrintManager
 
-        val jobName = "Report_" + getTime(System.currentTimeMillis())
+        val jobName = "Report_" + getDate(System.currentTimeMillis())
 
         // Get a print adapter instance
         val printAdapter: PrintDocumentAdapter

@@ -10,6 +10,8 @@ import com.uttampanchasara.network.remote.ApiClient
 import com.uttampanchasara.network.remote.ApiServices
 import dagger.Module
 import dagger.Provides
+import io.socket.client.IO
+import io.socket.client.Socket
 import javax.inject.Singleton
 
 /**
@@ -54,5 +56,15 @@ class AppModule constructor(val mApplication: Application) {
     @Singleton
     internal fun provideDbHelper(appDbHelper: AppDbHelper): DbHelper {
         return appDbHelper
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideSocket(): Socket {
+        val options = IO.Options()
+        options.reconnection = true
+        options.reconnectionDelay = 500
+        options.reconnectionAttempts = 10
+        return IO.socket("http://192.168.1.56:3000", options)
     }
 }

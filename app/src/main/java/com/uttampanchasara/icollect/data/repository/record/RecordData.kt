@@ -6,17 +6,17 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "Records")
 data class RecordData(
+        @SerializedName("createdAt")
+        val createdAt: Long,
+        @SerializedName("createdDate")
+        val createdDate: String,
+        @SerializedName("customerAddress")
+        val customerAddress: String,
         @PrimaryKey
-        @SerializedName("time")
-        val time: Long,
-        @SerializedName("date")
-        val date: String,
-        @SerializedName("address")
-        val address: String,
-        @SerializedName("code")
-        val code: String,
-        @SerializedName("name")
-        val name: String,
-        @SerializedName("number")
-        val number: String
+        @SerializedName("productId")
+        val productId: String,
+        @SerializedName("customerName")
+        val customerName: String,
+        @SerializedName("customerNumber")
+        val customerNumber: String
 )

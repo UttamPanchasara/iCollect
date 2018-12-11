@@ -80,18 +80,18 @@ class RecordListAdapter(val mClickListener: RecordClickListener) : RecyclerView.
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bindView(recordData: RecordData) {
-        itemView.txtCode.text = recordData.code
-        itemView.txtName.text = recordData.name
-        itemView.txtTime.text = getTime(recordData.time)
+        itemView.txtCode.text = recordData.productId
+        itemView.txtName.text = recordData.customerName
+        itemView.txtTime.text = getTime(recordData.createdAt)
 
-        if (recordData.address.isNotEmpty()) {
-            itemView.txtAddress.text = recordData.address
+        if (recordData.customerAddress.isNotEmpty()) {
+            itemView.txtAddress.text = recordData.customerAddress
         } else {
             itemView.txtAddress.text = "NA"
         }
 
-        if (recordData.number.isNotEmpty()) {
-            itemView.txtNumber.text = recordData.number
+        if (recordData.customerNumber.isNotEmpty()) {
+            itemView.txtNumber.text = recordData.customerNumber
         } else {
             itemView.txtNumber.text = "NA"
         }
