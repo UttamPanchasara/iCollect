@@ -2,6 +2,7 @@ package com.uttampanchasara.icollect.data
 
 import android.arch.lifecycle.LiveData
 import com.uttampanchasara.icollect.data.repository.record.RecordData
+import com.uttampanchasara.icollect.data.repository.user.User
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -12,6 +13,16 @@ import javax.inject.Inject
  */
 class AppDbHelper
 @Inject internal constructor(private val appDatabase: AppDatabase) : DbHelper {
+    override fun getUsers(): LiveData<List<User>> {
+        return appDatabase.userDao().getLiveUser()
+    }
+
+    override fun insertUsers(user: List<User>): Observable<Boolean> {
+        return Observable.fromCallable {
+            appDatabase.userDao().insertAll(user)
+            return@fromCallable true
+        }
+    }
 
     override fun getRecordsFromDate(date: String?): Observable<List<RecordData>> {
         return Observable.fromCallable {

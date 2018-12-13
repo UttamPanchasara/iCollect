@@ -6,12 +6,16 @@ import com.uttampanchasara.icollect.data.DataManager
 import com.uttampanchasara.icollect.di.component.ActivityComponent
 import com.uttampanchasara.icollect.ui.base.BaseActivity
 import com.uttampanchasara.icollect.ui.dashboard.DashboardActivity
+import io.socket.client.Socket
 import javax.inject.Inject
 
 class SplashActivity : BaseActivity(), SplashView {
     override fun getLayout(): Int {
         return R.layout.activity_splash
     }
+
+    @Inject
+    lateinit var mSocket: Socket
 
     @Inject
     lateinit var mDataManager: DataManager

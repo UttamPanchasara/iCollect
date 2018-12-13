@@ -6,6 +6,7 @@ import com.uttampanchasara.icollect.ui.addnew.AddNewActivity
 import com.uttampanchasara.icollect.ui.dashboard.DashboardActivity
 import com.uttampanchasara.icollect.ui.record.RecordActivity
 import com.uttampanchasara.icollect.ui.splash.SplashActivity
+import com.uttampanchasara.icollect.ui.users.UsersActivity
 import dagger.Component
 
 /**
@@ -24,4 +25,6 @@ interface ActivityComponent {
     fun inject(addNewActivity: AddNewActivity)
 
     fun inject(dashboardActivity: DashboardActivity)
+
+    fun inject(usersActivity: UsersActivity)
 }

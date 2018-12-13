@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_person"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:textColor="@color/primary_text"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Tester Name" />
+
+    <TextView
+        android:id="@+id/txtNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:drawableStart="@drawable/ic_phone"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:textColor="@color/primary_text"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/txtName"
+        tools:text="0123456789" />
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_mail"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:paddingStart="2dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="2dp"
+        android:textColor="@color/primary_text"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/txtNumber"
+        tools:text="name@email.com" />
+
+</android.support.constraint.ConstraintLayout>

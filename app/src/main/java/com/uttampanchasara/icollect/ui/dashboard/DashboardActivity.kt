@@ -2,25 +2,22 @@ package com.uttampanchasara.icollect.ui.dashboard
 
 import android.arch.lifecycle.Observer
 import android.content.Intent
-import android.util.Log
 import com.uttampanchasara.icollect.R
 import com.uttampanchasara.icollect.data.DataManager
 import com.uttampanchasara.icollect.data.repository.record.RecordData
+import com.uttampanchasara.icollect.data.repository.user.User
 import com.uttampanchasara.icollect.di.component.ActivityComponent
 import com.uttampanchasara.icollect.getDate
-import com.uttampanchasara.icollect.getTimeWithTFormat
 import com.uttampanchasara.icollect.ui.base.BaseActivity
 import com.uttampanchasara.icollect.ui.record.RecordActivity
-import io.socket.client.Socket
-import io.socket.emitter.Emitter
+import com.uttampanchasara.icollect.ui.users.UsersActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
-import org.json.JSONObject
 import javax.inject.Inject
 
 /**
  * @since 12/10/2018
  */
-class DashboardActivity : BaseActivity(), DashboardView, Observer<List<RecordData>> {
+class DashboardActivity : BaseActivity(), DashboardView {
 
     override fun getLayout(): Int {
         return R.layout.activity_dashboard
@@ -28,9 +25,6 @@ class DashboardActivity : BaseActivity(), DashboardView, Observer<List<RecordDat
 
     @Inject
     lateinit var mDataManager: DataManager
-
-    @Inject
-    lateinit var mSocket: Socket
 
     @Inject
     lateinit var mViewModel: DashboardViewModel
@@ -49,55 +43,26 @@ class DashboardActivity : BaseActivity(), DashboardView, Observer<List<RecordDat
             startRecordActivity()
         }
 
-        mSocket.on("new_record", object : Emitter.Listener {
-            override fun call(vararg args: Any?) {
-                try {
-                    val recordObject = args[0] as JSONObject
-                    Log.d(TAG, recordObject.toString())
-
-                    var createdTime: Long = 0
-                    val createdAt = recordObject.getString("createdAt")
-                    if (!createdAt.isNullOrEmpty()) {
-                        createdTime = getTimeWithTFormat(createdAt)
-                    }
-                    val recordData = RecordData(createdTime,
-                            recordObject.getString("createdDate"),
-                            recordObject.getString("customerAddress"),
-                            recordObject.getString("productId"),
-                            recordObject.getString("customerName"),
-                            recordObject.getString("customerNumber"))
-
-                    mViewModel.insertRecord(recordData)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-        })
-
-        mSocket.on("users", object : Emitter.Listener {
-            override fun call(vararg args: Any?) {
-                try {
-                    val recordObject = args[0] as JSONObject
-                    Log.d(TAG, recordObject.toString())
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-        })
+        txtUsers.setOnClickListener {
+            startActivity(Intent(this, UsersActivity::class.java))
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        mDataManager.getRecords().observe(this, this)
+        mDataManager.getUsers().observe(this, usersObserver)
+        mDataManager.getRecords().observe(this, recordsObserver)
     }
 
-    override fun onPause() {
-        super.onPause()
-        mDataManager.getRecords().removeObserver(this)
+    private val usersObserver = Observer<List<User>> {
+        if (it?.isNotEmpty()!!) {
+            txtUsers.text = it.size.toString()
+        } else {
+            txtUsers.text = "0"
+        }
     }
 
-    override fun onChanged(it: List<RecordData>?) {
+    private val recordsObserver = Observer<List<RecordData>> {
         if (it?.isNotEmpty()!!) {
             txtTotalRecords.text = it.size.toString()
         } else {
@@ -106,6 +71,12 @@ class DashboardActivity : BaseActivity(), DashboardView, Observer<List<RecordDat
 
         val mCurrentDate = getDate(System.currentTimeMillis())
         mViewModel.getRecordsFromDate(mCurrentDate)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mDataManager.getRecords().removeObserver(recordsObserver)
+        mDataManager.getUsers().removeObserver(usersObserver)
     }
 
     override fun onDetachView() {

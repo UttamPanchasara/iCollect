@@ -2,6 +2,7 @@ package com.uttampanchasara.icollect.data
 
 import android.arch.lifecycle.LiveData
 import com.uttampanchasara.icollect.data.repository.record.RecordData
+import com.uttampanchasara.icollect.data.repository.user.User
 import io.reactivex.Observable
 
 /**
@@ -14,6 +15,8 @@ interface DbHelper {
 
     fun getRecords(): LiveData<List<RecordData>>
 
+    fun getUsers(): LiveData<List<User>>
+
     fun getAllRecords(): Observable<List<RecordData>>
 
     fun searchRecord(query: String?, date: String?): Observable<List<RecordData>>
@@ -25,4 +28,6 @@ interface DbHelper {
     fun getLiveRecordsFromDate(date: String?): LiveData<List<RecordData>>
 
     fun getRecordsFromDate(date: String?): Observable<List<RecordData>>
+
+    fun insertUsers(user: List<User>): Observable<Boolean>
 }

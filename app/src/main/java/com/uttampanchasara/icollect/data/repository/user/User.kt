@@ -6,5 +6,8 @@ import android.arch.persistence.room.PrimaryKey
 @Entity(tableName = "User")
 data class User(
         @PrimaryKey
-        val email: String,
-        val name: Boolean)
+        val id: Int,
+        val userName: String,
+        val userEmail: String,
+        val userNumber: String,
+        val createdAt: String)

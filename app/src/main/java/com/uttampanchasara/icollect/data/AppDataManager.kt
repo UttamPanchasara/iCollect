@@ -3,6 +3,7 @@ package com.uttampanchasara.icollect.data
 import android.arch.lifecycle.LiveData
 import android.content.Context
 import com.uttampanchasara.icollect.data.repository.record.RecordData
+import com.uttampanchasara.icollect.data.repository.user.User
 import com.uttampanchasara.icollect.di.ApplicationContext
 import com.uttampanchasara.network.remote.ApiServices
 import io.reactivex.Observable
@@ -19,6 +20,13 @@ class AppDataManager
 @Inject internal constructor(@ApplicationContext val context: Context,
                              val dbHelper: DbHelper,
                              val apiServices: ApiServices) : DataManager {
+    override fun getUsers(): LiveData<List<User>> {
+        return dbHelper.getUsers()
+    }
+
+    override fun insertUsers(user: List<User>): Observable<Boolean> {
+        return dbHelper.insertUsers(user)
+    }
 
     override fun getRecordsFromDate(date: String?): Observable<List<RecordData>> {
         return dbHelper.getRecordsFromDate(date)

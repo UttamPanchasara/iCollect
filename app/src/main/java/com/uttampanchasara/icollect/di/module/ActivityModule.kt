@@ -14,6 +14,7 @@ import com.uttampanchasara.icollect.utils.rx.SchedulerProvider
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
+import io.socket.client.Socket
 
 /**
  *
@@ -56,7 +57,7 @@ class ActivityModule constructor(val mActivity: AppCompatActivity) {
 
     @Provides
     @PerActivity
-    internal fun provideDashboardViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider, compositeDisposable: CompositeDisposable):
-            DashboardViewModel = DashboardViewModel(dataManager, schedulerProvider, compositeDisposable)
+    internal fun provideDashboardViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider, compositeDisposable: CompositeDisposable, socket: Socket):
+            DashboardViewModel = DashboardViewModel(dataManager, schedulerProvider, compositeDisposable, socket)
 
 }
