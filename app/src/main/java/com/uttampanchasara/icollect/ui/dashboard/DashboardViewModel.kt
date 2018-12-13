@@ -36,30 +36,28 @@ class DashboardViewModel
         // broadcast event to load users
         mSocket.emit("load_users", "")
 
-        mSocket.on("new_record", object : Emitter.Listener {
-            override fun call(vararg args: Any?) {
-                try {
-                    val recordObject = args[0] as JSONObject
-                    Log.d(DashboardActivity.TAG, recordObject.toString())
+        mSocket.on("new_record") { args ->
+            try {
+                val recordObject = args[0] as JSONObject
+                Log.d(DashboardActivity.TAG, recordObject.toString())
 
-                    var createdTime: Long = 0
-                    val createdAt = recordObject.getString("createdAt")
-                    if (!createdAt.isNullOrEmpty()) {
-                        createdTime = getTimeWithTFormat(createdAt)
-                    }
-                    val recordData = RecordData(createdTime,
-                            recordObject.getString("createdDate"),
-                            recordObject.getString("customerAddress"),
-                            recordObject.getString("productId"),
-                            recordObject.getString("customerName"),
-                            recordObject.getString("customerNumber"))
-
-                    insertRecord(recordData)
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                var createdTime: Long = 0
+                val createdAt = recordObject.getString("createdAt")
+                if (!createdAt.isNullOrEmpty()) {
+                    createdTime = getTimeWithTFormat(createdAt)
                 }
+                val recordData = RecordData(createdTime,
+                        recordObject.getString("createdDate"),
+                        recordObject.getString("customerAddress"),
+                        recordObject.getString("productId"),
+                        recordObject.getString("customerName"),
+                        recordObject.getString("customerNumber"))
+
+                insertRecord(recordData)
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-        })
+        }
 
         mSocket.on("load_users") {
             try {
