@@ -6,6 +6,7 @@ import com.uttampanchasara.icollect.data.DataManager
 import com.uttampanchasara.icollect.di.ActivityContext
 import com.uttampanchasara.icollect.di.PerActivity
 import com.uttampanchasara.icollect.ui.addnew.AddNewViewModel
+import com.uttampanchasara.icollect.ui.chat.ChatViewModel
 import com.uttampanchasara.icollect.ui.dashboard.DashboardViewModel
 import com.uttampanchasara.icollect.ui.record.RecordViewModel
 import com.uttampanchasara.icollect.ui.splash.SplashViewModel
@@ -59,5 +60,10 @@ class ActivityModule constructor(val mActivity: AppCompatActivity) {
     @PerActivity
     internal fun provideDashboardViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider, compositeDisposable: CompositeDisposable, socket: Socket):
             DashboardViewModel = DashboardViewModel(dataManager, schedulerProvider, compositeDisposable, socket)
+
+    @Provides
+    @PerActivity
+    internal fun provideChatViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider, compositeDisposable: CompositeDisposable, socket: Socket):
+            ChatViewModel = ChatViewModel(dataManager, schedulerProvider, compositeDisposable, socket)
 
 }

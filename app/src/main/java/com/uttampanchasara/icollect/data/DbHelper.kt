@@ -1,6 +1,7 @@
 package com.uttampanchasara.icollect.data
 
 import android.arch.lifecycle.LiveData
+import com.uttampanchasara.icollect.data.repository.msg.ChatMessages
 import com.uttampanchasara.icollect.data.repository.record.RecordData
 import com.uttampanchasara.icollect.data.repository.user.User
 import io.reactivex.Observable
@@ -30,4 +31,8 @@ interface DbHelper {
     fun getRecordsFromDate(date: String?): Observable<List<RecordData>>
 
     fun insertUsers(user: List<User>): Observable<Boolean>
+
+    fun insertMessage(chatMessages: ChatMessages): Observable<Boolean>
+
+    fun getChatMessages(roomId: String): LiveData<List<ChatMessages>>
 }

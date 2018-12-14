@@ -3,6 +3,7 @@ package com.uttampanchasara.icollect.di.component
 import com.uttampanchasara.icollect.di.PerActivity
 import com.uttampanchasara.icollect.di.module.ActivityModule
 import com.uttampanchasara.icollect.ui.addnew.AddNewActivity
+import com.uttampanchasara.icollect.ui.chat.ChatActivity
 import com.uttampanchasara.icollect.ui.dashboard.DashboardActivity
 import com.uttampanchasara.icollect.ui.record.RecordActivity
 import com.uttampanchasara.icollect.ui.splash.SplashActivity
@@ -27,4 +28,6 @@ interface ActivityComponent {
     fun inject(dashboardActivity: DashboardActivity)
 
     fun inject(usersActivity: UsersActivity)
+
+    fun inject(chatActivity: ChatActivity)
 }

@@ -22,4 +22,5 @@
     <string name="text_add_records">Add Records</string>
     <string name="label_users">Users</string>
     <string name="no_users">No Users!</string>
+    <string name="write_message">Write Message</string>
 </resources>

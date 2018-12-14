@@ -67,8 +67,14 @@ fun getTimeWithTFormat(date: String): Long {
 
 fun getTime(time: Long): String {
     val cal = Calendar.getInstance(Locale.ENGLISH)
-    cal.setTimeInMillis(time)
+    cal.timeInMillis = time
     return DateFormat.format("dd-MM-yyyy hh:mm:ss a", cal).toString()
+}
+
+fun getMessageTime(time: Long): String {
+    val cal = Calendar.getInstance(Locale.ENGLISH)
+    cal.timeInMillis = time
+    return DateFormat.format("hh:mm a", cal).toString()
 }
 
 fun getTime(time: String): String {

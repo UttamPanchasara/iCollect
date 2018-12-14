@@ -1,6 +1,7 @@
 package com.uttampanchasara.icollect.data
 
 import android.arch.lifecycle.LiveData
+import com.uttampanchasara.icollect.data.repository.msg.ChatMessages
 import com.uttampanchasara.icollect.data.repository.record.RecordData
 import com.uttampanchasara.icollect.data.repository.user.User
 import io.reactivex.Observable
@@ -13,6 +14,17 @@ import javax.inject.Inject
  */
 class AppDbHelper
 @Inject internal constructor(private val appDatabase: AppDatabase) : DbHelper {
+    override fun getChatMessages(roomId: String): LiveData<List<ChatMessages>> {
+        return appDatabase.chatMessageDao().getRoomMessages(roomId)
+    }
+
+    override fun insertMessage(chatMessages: ChatMessages): Observable<Boolean> {
+        return Observable.fromCallable {
+            appDatabase.chatMessageDao().insert(chatMessages)
+            return@fromCallable true
+        }
+    }
+
     override fun getUsers(): LiveData<List<User>> {
         return appDatabase.userDao().getLiveUser()
     }

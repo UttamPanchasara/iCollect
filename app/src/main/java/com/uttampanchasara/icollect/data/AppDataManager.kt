@@ -2,6 +2,7 @@ package com.uttampanchasara.icollect.data
 
 import android.arch.lifecycle.LiveData
 import android.content.Context
+import com.uttampanchasara.icollect.data.repository.msg.ChatMessages
 import com.uttampanchasara.icollect.data.repository.record.RecordData
 import com.uttampanchasara.icollect.data.repository.user.User
 import com.uttampanchasara.icollect.di.ApplicationContext
@@ -20,6 +21,14 @@ class AppDataManager
 @Inject internal constructor(@ApplicationContext val context: Context,
                              val dbHelper: DbHelper,
                              val apiServices: ApiServices) : DataManager {
+    override fun getChatMessages(roomId: String): LiveData<List<ChatMessages>> {
+        return dbHelper.getChatMessages(roomId)
+    }
+
+    override fun insertMessage(chatMessages: ChatMessages): Observable<Boolean> {
+        return dbHelper.insertMessage(chatMessages)
+    }
+
     override fun getUsers(): LiveData<List<User>> {
         return dbHelper.getUsers()
     }

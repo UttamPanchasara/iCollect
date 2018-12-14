@@ -38,6 +38,10 @@
             android:name="com.uttampanchasara.icollect.ui.users.UsersActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.uttampanchasara.icollect.ui.chat.ChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name="com.uttampanchasara.icollect.ui.addnew.AddNewActivity"

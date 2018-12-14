@@ -36,7 +36,7 @@ class UsersActivity : BaseActivity(), UsersView, Observer<List<User>> {
         mViewModel.onAttachView(this)
         setToolbar(toolbar, "Users", true)
 
-        mAdapter = UsersListAdapter()
+        mAdapter = UsersListAdapter(this)
         rvUsers.layoutManager = LinearLayoutManager(this)
         rvUsers.adapter = mAdapter
     }
