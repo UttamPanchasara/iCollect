@@ -3,6 +3,8 @@ package com.uttampanchasara.icollect.ui.chat
 import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.support.v7.widget.LinearLayoutManager
+import android.text.Editable
+import android.text.TextWatcher
 import com.uttampanchasara.icollect.R
 import com.uttampanchasara.icollect.data.DataManager
 import com.uttampanchasara.icollect.data.repository.msg.ChatMessages
@@ -56,7 +58,10 @@ class ChatActivity : BaseActivity(), ChatView {
         mSocket.emit("room", userId)
 
         mAdapter = MessageListAdapter(this)
-        rvChat.layoutManager = LinearLayoutManager(this)
+        val layoutManager = LinearLayoutManager(this).apply {
+            isSmoothScrollbarEnabled = true
+        }
+        rvChat.layoutManager = layoutManager
         rvChat.adapter = mAdapter
 
         btnSend.setOnClickListener {
@@ -69,20 +74,42 @@ class ChatActivity : BaseActivity(), ChatView {
                 jsonObject.put(ChatMessages.USER_NAME, userName)
                 jsonObject.put(ChatMessages.USER_ID, userId)
                 jsonObject.put(ChatMessages.MESSAGE, edtMsg.text.toString())
-                jsonObject.put(ChatMessages.MESSAGE_TYPE, ChatMessages.TYPE.SENT.value)
                 jsonObject.put(ChatMessages.TIME, System.currentTimeMillis())
                 mViewModel.insertMessage(chatMessages)
                 mSocket.emit("send-message", jsonObject)
 
                 edtMsg.setText("")
+                mViewModel.notifyOnTyping(userId, "")
             }
         }
+
+        edtMsg.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                mViewModel.notifyOnTyping(userId, "Typing..")
+                if (s.toString().isEmpty()) {
+                    mViewModel.notifyOnTyping(userId, "")
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
     }
 
     private val chatMessagesObserver = Observer<List<ChatMessages>> {
         if (it?.isNotEmpty()!!) {
             mAdapter.setData(it)
+            rvChat.smoothScrollToPosition(mAdapter.itemCount)
         }
+    }
+
+    override fun onMessageTyping(msg: String) {
+        supportActionBar!!.subtitle = msg
     }
 
     override fun onResume() {

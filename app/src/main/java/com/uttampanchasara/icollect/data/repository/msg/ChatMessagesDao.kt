@@ -23,6 +23,6 @@ interface ChatMessagesDao {
     @Query("SELECT * FROM chatmessages")
     fun getLiveMessages(): LiveData<List<ChatMessages>>
 
-    @Query("SELECT * FROM chatmessages WHERE roomId =:roomId ORDER BY time DESC")
+    @Query("SELECT * FROM chatmessages WHERE roomId =:roomId ORDER BY time ASC")
     fun getRoomMessages(roomId: String): LiveData<List<ChatMessages>>
 }

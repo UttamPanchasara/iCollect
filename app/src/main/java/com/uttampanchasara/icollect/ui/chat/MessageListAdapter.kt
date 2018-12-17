@@ -56,9 +56,10 @@ class MessageListAdapter(private val mContext: Context) : RecyclerView.Adapter<R
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val message = mMessageList[position]
 
-        when (holder.itemViewType) {
-            message.messageType -> (holder as SentMessageHolder).bind(message)
-            message.messageType -> (holder as ReceivedMessageHolder).bind(message)
+        if (message.messageType == ChatMessages.TYPE.SENT.value) {
+            (holder as SentMessageHolder).bind(message)
+        } else {
+            (holder as ReceivedMessageHolder).bind(message)
         }
     }
 
@@ -83,10 +84,10 @@ class MessageListAdapter(private val mContext: Context) : RecyclerView.Adapter<R
             messageText.text = message.message
 
             // Format the stored timestamp into a readable String using method.
-            txtName.text = getMessageTime(message.time)
+            txtTime.text = getMessageTime(message.time)
 
             txtName.text = message.userName
-            txtNameLetter.setText(message.userName[0].toInt())
+            txtNameLetter.text = message.userName[0].toString()
         }
     }
 }
