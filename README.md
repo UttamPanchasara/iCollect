@@ -5,9 +5,9 @@
 
 In which I have used barcode scanner to scan any code and other basic information of user and store that as record also show the history for same.
 
-| Dashboard | Add New Record | History with (Filter,Detail,Share) |
-| -------------------------------- | --------------------------------- | -------------------------------- | 
-| <img src="https://github.com/UttamPanchasara/iCollect/blob/master/app/src/main/assets/screenshots/icollect_dashboard.png" height="400" alt="Screenshot"/> | <img src="https://i.imgur.com/bN0ClZg.gif" height="400" alt="Screenshot"/>  | <img src="https://i.imgur.com/C9vy26y.gif" height="400" alt="Screenshot"/> |
+| Dashboard | Add New Record |
+| -------------------------------- | --------------------------------- |
+| <img src="https://github.com/UttamPanchasara/iCollect/blob/master/app/src/main/assets/screenshots/icollect_dashboard.png" height="400" alt="Screenshot"/> | <img src="https://i.imgur.com/bN0ClZg.gif" height="400" alt="Screenshot"/>  |
 
 | Barcode Scanner | Pdf Report | Search |
 | -------------------------------- | -------------------------------- | -------------------------------- |
